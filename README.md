@@ -1,3 +1,7 @@
+### Join The Discord Server to use this bot!!
+- free to use and always online!*
+  [https://discord.gg/fHfmjaCXtb](https://discord.gg/k5NeWuxAU6)
+  
 ## Purposes
 - Resign encrypted saves (both with or without replacing the decrypted contents, also known as encrypting)
 - Decrypt encrypted saves
@@ -55,10 +59,6 @@ If you wanna contribute to this list, please let me know!
   `/data/example/upload`, these paths will get deleted and remade so you should not store anything there
 - Saves created using this application will work on SaveWizard as long as you copy it from your PS4
 - Make sure to use the latest cecie.nim release
-
-### No jailbroken PS4?
-- Join my discord where the bot is hosted, free to use and often hosted
-  [https://discord.gg/fHfmjaCXtb](https://discord.gg/k5NeWuxAU6)
 
 ## Credits
 - https://github.com/Team-Alua/cecie.nim for creating the homebrew app that makes this possible, in addition to helping me
