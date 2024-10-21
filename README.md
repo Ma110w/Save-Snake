@@ -58,7 +58,7 @@ If you wanna contribute to this list, please let me know!
 
 ### No jailbroken PS4?
 - Join my discord where the bot is hosted, free to use and often hosted
-  https://discord.gg/fHfmjaCXtb
+  [https://discord.gg/fHfmjaCXtb](https://discord.gg/k5NeWuxAU6)
 
 ## Credits
 - https://github.com/Team-Alua/cecie.nim for creating the homebrew app that makes this possible, in addition to helping me
