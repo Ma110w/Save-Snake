@@ -59,8 +59,8 @@ If you wanna contribute to this list, please let me know!
 - Saves created using this application will work on SaveWizard
 
 ## Credits
-- https://github.com/Team-Alua/cecie.nim for creating the homebrew app that makes this possible, in addition to helping me
-- https://github.com/dylanbbk & https://github.com/iCrazeiOS for help
+- https://github.com/Team-Alua/cecie.nim for creating the homebrew app that makes this possible, in addition to helping hzh
+- https://github.com/dylanbbk & https://github.com/iCrazeiOS for helping hzh
 - https://github.com/bucanero/save-decrypters for the extra encryption methods
 - https://github.com/bucanero/pfd_sfo_tools/blob/master/sfopatcher/src/sfo.c for the param.sfo parser
 - https://github.com/bucanero/apollo-lib/blob/main/source/patches.c#L2781 for the quick codes implementation
