@@ -13,3 +13,11 @@ network/__pycache__
 utils/__pycache__
 UserSaves
 *.sh
+.env
+key.json
+.venv
+.vscode
+README.md
+requirements.txt
+STORAGE/
+__pycache__

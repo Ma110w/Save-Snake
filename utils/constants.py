@@ -12,7 +12,6 @@ from zipfile import (
 from discord.ext import commands
 from enum import Enum
 from psnawp_api import PSNAWP
-
 VERSION = "v1.2.0"
 
 # LOGGER
@@ -183,7 +182,7 @@ class Color(Enum):
     RED = 0xF42B00
 
 class Embed_t(Enum):
-    DEFAULT_FOOTER = f"Made by hzh. ({VERSION})"
+    DEFAULT_FOOTER = f"Made by hzh. ({VERSION}, Hosted by /x64/dumped)"
 
 embUtimeout = discord.Embed(
     title="Upload alert: Error",
@@ -305,12 +304,17 @@ embvalidpsn = discord.Embed(
 embvalidpsn.set_footer(text=Embed_t.DEFAULT_FOOTER.value)
 
 embinit = discord.Embed(
-    title="Instance creator",
-    description="Click button to get started!\nYou can also use old threads that you have created with the bot.",
-    colour=Color.DEFAULT.value
+    title="Save Snake <:pslogo:1297562957009387704> ",
+    description=(
+        "## ℹ️Click the"
+        "```Create Thread```"
+        "\n## button to get started! You can return to your personal thread anytime. <a:catmoed:1297413325281558538>\n"
+        "### <:HUH:1297563589552635976> If the interaction fails, the bot is most likely offline. <a:snakeroll:1297404301143969823>"
+    ),
+    colour=0x39FF14  # Neon-Green
 )
+embinit.set_image(url="https://i.pinimg.com/originals/86/b8/72/86b872bc4dc4e2457128dd465a26ce68.gif")
 embinit.set_footer(text=Embed_t.DEFAULT_FOOTER.value)
-
 embTitleChange = discord.Embed(
     title="Change title: Upload",
     description="Please attach atleast two encrypted savefiles that you want to upload (.bin and non bin).",
