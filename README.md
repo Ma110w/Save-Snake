@@ -1,6 +1,3 @@
-# HTOS
-A discord bot with tons of functionalities that can handle PS4 saves using a jailbroken PS4.
-
 ## Purposes
 - Resign encrypted saves (both with or without replacing the decrypted contents, also known as encrypting)
 - Decrypt encrypted saves
@@ -53,46 +50,6 @@ A discord bot with tons of functionalities that can handle PS4 saves using a jai
 
 If you wanna contribute to this list, please let me know!
 
-## Requirements
-- A jailbroken PS4 running atleast GoldHEN v2.4b14 payload
-- Give the bot permsisions to manage threads and delete messages in addition to the message content intents.
-
-## Tutorial
-Make sure to read everything.
-
-### NPSSO
-For the bot to completely function you need to input your NPSSO 64 character token. This is so you can be authorized to use the PSN API to obtain account ID from username.
-
-How to obtain NPPSO:
-
-- Go to playstation.com and login
-- Go to this link https://ca.account.sony.com/api/v1/ssocookie
-- Find `{"npsso":"<64 character npsso code>"}`
-- If you leave it to "None" the psn.flipscreen.games website will be used to obtain account ID
-
-### Everything else
-- Download the pkg from https://github.com/hzhreal/cecie.nim/releases/tag/v3.00 and install it on your PS4
-- Download the config.ini file from https://github.com/hzhreal/cecie.nim/blob/main/examples/config.ini and edit it with your desired 
-  socket port and upload folder (path on PS4)
-- Upload the config.ini file to `/data/cecie` on your PS4.
-- Set up a Google Drive Service Account and grab the json file with the key 
-  https://support.google.com/a/answer/7378726?hl=en (its free), if the json file has the key "universal_domain", you can remove it, in the case of an error
-- Download the code from the bot and open the `.env` file, edit it as follows:  
-  ```IP```: PS4 IP address  
-  ```FTP_PORT```: The port that your FTP payload uses  
-  ```CECIE_PORT```: The port that you used in the config.ini file  
-  ```UPLOAD_PATH```: The path that you used in the config.ini file  
-  ```MOUNT_PATH```: The path on your PS4 where the saves will be mounted  
-  ```GOOGLE_DRIVE_JSON_PATH```: The path to the Google Drive Service Account json file  
-  ```STORED_SAVES_FOLDER_PATH```: The path to the folder where you store saves for use in the quickresign command, format inside the folder is ```{NAME OF GAME}/{CUSAXXXXX}/{ANY NAME FOR SAVE}/{THE .BIN AND FILE}```  
-  ```TOKEN```: Discord bot token  
-  ```NPSSO```: The NPSSO token  
-- Cd into the directory and run `pip install -r requirements.txt`
-- Run bot.py
-- Run the `/init` command in the channel you want the private threads to get created in, the button will work even if you restart the bot because it is a persistent view
-- Make sure you are running the pkg
-- Enjoy!
-  
 ### Disclaimers
 - Remember to not have the same folder for mount and upload. Have them in different paths, for example `/data/example/mount` & 
   `/data/example/upload`, these paths will get deleted and remade so you should not store anything there
@@ -112,3 +69,4 @@ How to obtain NPPSO:
 - https://github.com/Zhaxxy/rdr2_enc_dec/blob/main/rdr2_enc_dec.py for the checksum
 - https://github.com/Zhaxxy/xenoverse2_ps4_decrypt for Xenoverse 2 extra layer of encryption
 - https://github.com/monkeyman192/MBINCompiler/releases/tag/v5.02.0-pre2 for No Man's Sky obfuscation (mapping.json)
+- https://github.com/hzhreal/HTOS for the original project and continued forking of it
