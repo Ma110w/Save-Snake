@@ -17,7 +17,6 @@ UserSaves
 key.json
 .venv
 .vscode
-README.md
 requirements.txt
 STORAGE/
 __pycache__
