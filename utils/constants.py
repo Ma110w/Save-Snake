@@ -393,6 +393,6 @@ blacklist_emb = discord.Embed(
 blacklist_emb.set_footer(text=Embed_t.DEFAULT_FOOTER.value)
 
 embChannelError = discord.Embed(title="Error",
-                                    description="Invalid channel!",
+                                    description="Invalid channel! Use https://discord.com/channels/1126956076810637403/1292176133009440908/1298018807004270602",
                                     colour=Color.DEFAULT.value)
 embChannelError.set_footer(text=Embed_t.DEFAULT_FOOTER.value)
