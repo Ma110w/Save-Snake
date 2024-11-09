@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-import discord
+import pycord as discord
 from utils.constants import bot, TOKEN
 from utils.workspace import startup, check_version
 from utils.helpers import threadButton

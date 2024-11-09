@@ -10,7 +10,7 @@ from network import FTPps, SocketPS, FTPError, SocketError
 from google_drive import GDapi, GDapiError
 from data.cheats import QuickCodes, QuickCodesError, QuickCheatsError
 from utils.constants import (
-    IP, PORT_FTP, PS_UPLOADDIR, PORT_CECIE, MAX_FILES, BOT_DISCORD_UPLOAD_LIMIT, BASE_ERROR_MSG, RANDOMSTRING_LENGTH, MOUNT_LOCATION, PS_ID_DESC, CON_FAIL, CON_FAIL_MSG,
+    IP, PORT_FTP, PS_UPLOADDIR, PORT_CECIE, MAX_FILES, BOT_DISCORD_UPLOAD_LIMIT, BASE_ERROR_MSG, RANDOMSTRING_LENGTH, MOUNT_LOCATION, ps_name_DESC, CON_FAIL, CON_FAIL_MSG,
     logger, Color, Embed_t,
     emb_upl_savegame, embTimedOut, working_emb
 )
@@ -29,7 +29,7 @@ class Quick(commands.Cog):
     quick_group = discord.SlashCommandGroup("quick")
 
     @quick_group.command(description="Resign pre stored saves.")
-    async def resign(self, ctx: discord.ApplicationContext, playstation_id: Option(str, description=PS_ID_DESC, default="")) -> None: # type: ignore
+    async def resign(self, ctx: discord.ApplicationContext, playstation_username: Option(str, description=ps_name_DESC, default="")) -> None: # type: ignore
         newUPLOAD_ENCRYPTED, newUPLOAD_DECRYPTED, newDOWNLOAD_ENCRYPTED, newPNG_PATH, newPARAM_PATH, newDOWNLOAD_DECRYPTED, newKEYSTONE_PATH = initWorkspace()
         workspaceFolders = [newUPLOAD_ENCRYPTED, newUPLOAD_DECRYPTED, newDOWNLOAD_ENCRYPTED, 
                             newPNG_PATH, newPARAM_PATH, newDOWNLOAD_DECRYPTED, newKEYSTONE_PATH]
@@ -41,7 +41,7 @@ class Quick(commands.Cog):
         mountPaths = []
         
         try:
-            user_id = await psusername(ctx, playstation_id)
+            user_id = await psusername(ctx, playstation_username)
             await asyncio.sleep(0.5)
 
             msg = await ctx.edit(embed=working_emb)
@@ -94,7 +94,7 @@ class Quick(commands.Cog):
 
             emb5 = discord.Embed(
                 title="Resigning process (Encrypted): Successful",
-                description=f"**{saveName}** resigned to **{playstation_id or user_id}**",
+                description=f"**{saveName}** resigned to **{playstation_username or user_id}**",
                 colour=Color.DEFAULT.value
             )
             emb5.set_footer(text=Embed_t.DEFAULT_FOOTER.value)
@@ -121,7 +121,7 @@ class Quick(commands.Cog):
         
         embRdone = discord.Embed(
             title="Resigning process (Encrypted): Successful",
-            description=f"**{saveName}** resigned to **{playstation_id or user_id}**.",
+            description=f"**{saveName}** resigned to **{playstation_username or user_id}**.",
             colour=Color.DEFAULT.value
         )
         embRdone.set_footer(text=Embed_t.DEFAULT_FOOTER.value)

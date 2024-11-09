@@ -24,7 +24,7 @@
 - All commands except ping will only work in private threads created by the bot, thread IDs are stored in .db file
 - Everything will get cleaned up locally and on the PS4
 - All commands that takes save pairs will resign
-- Account ID database, do not include playstation_id parameter if you want to use previously stored account ID
+- Account ID database, do not include playstation_username parameter if you want to use previously stored account ID
 - Interactive user interface
 
 | Second layer encryption game list        | PS4 -> PC conversion and vice versa | Quick cheats             | Extra re-region support (more than keystone & title id swapping) |
@@ -56,7 +56,7 @@ If you wanna contribute to this list, please let me know!
 
 ### Disclaimers
 - Bot is down for a couple minutes at a time, usually for maintence
-- Saves created using this application will work on SaveWizard
+- Saves created using this application will work on SaveWizard as long as you copy it from your PS4
 
 ## Credits
 - https://github.com/Team-Alua/cecie.nim for creating the homebrew app that makes this possible, in addition to helping hzh

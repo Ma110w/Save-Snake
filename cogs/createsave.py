@@ -11,7 +11,7 @@ from google_drive import GDapi, GDapiError
 from data.crypto.helpers import extra_import
 from utils.constants import (
     IP, PORT_FTP, PORT_CECIE, PS_UPLOADDIR, MOUNT_LOCATION,
-    SAVEBLOCKS_MAX, SCE_SYS_CONTENTS, MANDATORY_SCE_SYS_CONTENTS, BASE_ERROR_MSG, PS_ID_DESC, RANDOMSTRING_LENGTH, MAX_FILES, CON_FAIL_MSG, CON_FAIL, MAX_FILENAME_LEN, MAX_PATH_LEN, CREATESAVE_ENC_CHECK_LIMIT,
+    SAVEBLOCKS_MAX, SCE_SYS_CONTENTS, MANDATORY_SCE_SYS_CONTENTS, BASE_ERROR_MSG, ps_name_DESC, RANDOMSTRING_LENGTH, MAX_FILES, CON_FAIL_MSG, CON_FAIL, MAX_FILENAME_LEN, MAX_PATH_LEN, CREATESAVE_ENC_CHECK_LIMIT,
     Color, Embed_t, logger
 )
 from utils.workspace import makeWorkspace, WorkspaceError, initWorkspace, cleanup
@@ -42,7 +42,7 @@ class CreateSave(commands.Cog):
               ctx: discord.ApplicationContext, 
               savename: Option(str, description="The name of the save."), # type: ignore
               saveblocks: saveblocks_annotation, # type: ignore
-              playstation_id: Option(str, description=PS_ID_DESC, default="") # type: ignore
+              playstation_username: Option(str, description=ps_name_DESC, default="") # type: ignore
             ) -> None:
         
         newUPLOAD_ENCRYPTED, newUPLOAD_DECRYPTED, newDOWNLOAD_ENCRYPTED, newPNG_PATH, newPARAM_PATH, newDOWNLOAD_DECRYPTED, newKEYSTONE_PATH = initWorkspace()
@@ -81,7 +81,7 @@ class CreateSave(commands.Cog):
         msg = ctx
 
         try:
-            user_id = await psusername(ctx, playstation_id)
+            user_id = await psusername(ctx, playstation_username)
             await asyncio.sleep(0.5)
 
             # value checks
@@ -216,7 +216,7 @@ class CreateSave(commands.Cog):
         
         embRdone = discord.Embed(
             title="Creation process: Successful",
-            description=f"**{savename}** created & resigned to **{playstation_id or user_id}**.",
+            description=f"**{savename}** created & resigned to **{playstation_username or user_id}**.",
             colour=Color.DEFAULT.value
         )
         embRdone.set_footer(text=Embed_t.DEFAULT_FOOTER.value)

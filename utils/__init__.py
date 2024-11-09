@@ -50,7 +50,7 @@ from .constants import (
     MAX_FILES,
     UPLOAD_TIMEOUT,
     SYS_FILE_MAX,
-    PS_ID_DESC,
+    ps_name_DESC,
     BASE_ERROR_MSG,
     QR_FOOTER1,
     QR_FOOTER2,
