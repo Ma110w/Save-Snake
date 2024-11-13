@@ -14,13 +14,18 @@ from utils.constants import (
     logger, Color, Embed_t,
     emb_upl_savegame, embTimedOut, working_emb
 )
-from utils.workspace import initWorkspace, makeWorkspace, WorkspaceError, cleanup, cleanupSimple, listStoredSaves
+from utils.workspace import initWorkspace, makeWorkspace, WorkspaceError, cleanup, cleanupSimple, listStoredSaves, listStoredCodes
 from utils.extras import generate_random_string
-from utils.helpers import DiscordContext, psusername, upload2, errorHandling, TimeoutHelper, send_final, run_qr_paginator
+from utils.helpers import DiscordContext, psusername, upload2, errorHandling, TimeoutHelper, send_final, run_qr_paginator, qr_interface_main
 from utils.orbis import OrbisError
 from utils.exceptions import PSNIDError
 from utils.namespaces import Cheats
 from utils.exceptions import FileError
+
+# Define qr_interface_main if it's supposed to be a local function
+async def qr_interface_main(d_ctx, stored_codes):
+    # Implementation of the function
+    pass
 
 class Quick(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
@@ -139,22 +144,27 @@ class Quick(commands.Cog):
         await cleanup(C1ftp, workspaceFolders, uploaded_file_paths, mountPaths)
 
     @quick_group.command(description="Apply save wizard quick codes to your save.")
-    async def codes(
-              self, 
-              ctx: discord.ApplicationContext, 
-              codes: str, 
-            ) -> None:
-        
+    async def codes(self, ctx: discord.ApplicationContext) -> None:
         newUPLOAD_ENCRYPTED, newUPLOAD_DECRYPTED, newDOWNLOAD_ENCRYPTED, newPNG_PATH, newPARAM_PATH, newDOWNLOAD_DECRYPTED, newKEYSTONE_PATH = initWorkspace()
         workspaceFolders = [newUPLOAD_ENCRYPTED, newUPLOAD_DECRYPTED, newDOWNLOAD_ENCRYPTED, 
                             newPNG_PATH, newPARAM_PATH, newDOWNLOAD_DECRYPTED, newKEYSTONE_PATH]
-        try: await makeWorkspace(ctx, workspaceFolders, ctx.channel_id)
-        except WorkspaceError: return
+        try: 
+            await makeWorkspace(ctx, workspaceFolders, ctx.channel_id)
+        except WorkspaceError: 
+            return
 
         await ctx.respond(embed=emb_upl_savegame)
         msg = await ctx.edit(embed=emb_upl_savegame)
         msg = await ctx.fetch_message(msg.id)
         d_ctx = DiscordContext(ctx, msg)
+
+        try:
+            stored_codes = await listStoredCodes()
+            selected_code, _ = await qr_interface_main(d_ctx, stored_codes)
+        except (WorkspaceError, TimeoutError) as e:
+            await errorHandling(msg, e, workspaceFolders, None, None, None)
+            logger.exception(f"{e} - {ctx.user.name} - (expected)")
+            return
 
         try:
             uploaded_file_paths = await upload2(d_ctx, newUPLOAD_DECRYPTED, max_files=MAX_FILES, sys_files=False, ps_save_pair_upload=False, ignore_filename_check=False)
@@ -171,7 +181,6 @@ class Quick(commands.Cog):
             await errorHandling(msg, BASE_ERROR_MSG, workspaceFolders, None, None, None)
             logger.exception(f"{e} - {ctx.user.name} - (unexpected)")
             return
-        
         completed = []
 
         if len(uploaded_file_paths) >= 1:
@@ -197,7 +206,7 @@ class Quick(commands.Cog):
                 await msg.edit(embed=embLoading)
 
                 try:
-                    qc = QuickCodes(savegame, codes)
+                    qc = QuickCodes(savegame, selected_code)
                     await qc.apply_code()  
                 except QuickCodesError as e:
                     e = f"**{str(e)}**" + "\nThe code has to work on all the savefiles you uploaded!"
@@ -211,7 +220,6 @@ class Quick(commands.Cog):
         
                 await msg.edit(embed=embApplied)
                 completed.append(savefile)
-
         if len(completed) == 1:
             finishedFiles = "".join(completed)
         else: finishedFiles = ", ".join(completed)
