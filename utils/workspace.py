@@ -14,7 +14,7 @@ from utils.constants import (
     UPLOAD_DECRYPTED, UPLOAD_ENCRYPTED, DOWNLOAD_DECRYPTED, PNG_PATH, KEYSTONE_PATH, NPSSO,
     DOWNLOAD_ENCRYPTED, PARAM_PATH, STORED_SAVES_FOLDER, IP, PORT_FTP, MOUNT_LOCATION, PS_UPLOADDIR,
     DATABASENAME_THREADS, DATABASENAME_ACCIDS, DATABASENAME_BLACKLIST, BLACKLIST_MESSAGE, RANDOMSTRING_LENGTH, logger, blacklist_logger, psnawp,
-    embChannelError, retry_emb, blacklist_emb, CODES_FOLDER
+    embChannelError, retry_emb, blacklist_emb
 )
 from utils.extras import generate_random_string
 from utils.type_helpers import uint64
@@ -534,18 +534,3 @@ async def check_version() -> None:
 #                 if stripped_line.lower() == target_value.lower():
 #                     return True
 #     return False
-
-async def listStoredCodes() -> dict[str, dict[str, str]]:
-    """Lists the codes in the codes folder, used in the quick codes command."""
-    codeList = await aiofiles.os.listdir(CODES_FOLDER) 
-    stored_codes = {}
-    
-    if len(codeList) == 0:
-        raise WorkspaceError("NO STORED CODES!")
-
-    for code in codeList:
-        codePath = os.path.join(CODES_FOLDER, code)
-        if await aiofiles.os.path.isfile(codePath):
-            stored_codes[code] = codePath
-    
-    return stored_codes
