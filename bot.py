@@ -15,10 +15,10 @@ async def on_ready() -> None:
     checkGDrive.start() # start gd daemon
     # Fetch application info to get the owner's details
     app_info = await bot.application_info()
+    global bot_owner_name
     bot_owner_name = app_info.owner.name  # Get the owner's username
-    bow = bot_owner_name = str
     print(
-        f"Bot is ready, the owners name is {bot_owner_name} invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot and the string owner name is {bow}"
+        f"Bot is ready, the owners name is {bot_owner_name} invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
     )
 
 @bot.event
@@ -62,9 +62,9 @@ async def helpbot(ctx: discord.ApplicationContext):
             "- Resigning and re-encryption are required for saves to function on new accounts or consoles.\n\n"
             "**Learn More**\n"
             "Watch our detailed video tutorial for step-by-step instructions: **[YouTube Tutorial](https://www.youtube.com/watch?v=cGeVhia0KjA)**\n\n"
-            "If you encounter any issues or need further help, please let me know.\n"
+            f"If you encounter any issues or need further help, please let me know. {bot_owner_name}\n"
             "**Conditions**\n"
-            "Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first."
+            f"Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first. {bot_owner_name}"
 
         ),
         color=discord.Color.blue()
