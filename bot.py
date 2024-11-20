@@ -62,9 +62,9 @@ async def helpbot(ctx: discord.ApplicationContext):
             "- Resigning and re-encryption are required for saves to function on new accounts or consoles.\n\n"
             "**Learn More**\n"
             "Watch our detailed video tutorial for step-by-step instructions: **[YouTube Tutorial](https://www.youtube.com/watch?v=cGeVhia0KjA)**\n\n"
-            "If you encounter any issues or need further help, please let me know. {bot_owner_name}\n"
+            "If you encounter any issues or need further help, please let me know.\n"
             "**Conditions**\n"
-            "Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first. {bot_owner_name}"
+            "Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first.{app_info.owner.name}"
 
         ),
         color=discord.Color.blue()
