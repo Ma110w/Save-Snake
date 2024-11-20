@@ -63,7 +63,7 @@ async def helpbot(ctx: discord.ApplicationContext):
             "**Learn More**\n"
             "Watch our detailed video tutorial for step-by-step instructions: **[YouTube Tutorial](https://www.youtube.com/watch?v=cGeVhia0KjA)**\n\n"
             f"If you encounter any issues or need further help, please let me know. **{bot_owner_name}**\n"
-            "**Conditions**\n"
+            "**Conditions**\n\n"
             f"Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first. **{bot_owner_name}**"
 
         ),
