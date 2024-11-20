@@ -182,7 +182,7 @@ class Color(Enum):
     RED = 0xF42B00
 
 class Embed_t(Enum):
-    DEFAULT_FOOTER = f"Made by hzh. ({VERSION}, Hosted by /x64/dumped), *(CONDITIONS APPLY)*"
+    DEFAULT_FOOTER = f"Made by hzh. ({VERSION}, Hosted by /x64/dumped) (conditions apply)"
 
 embUtimeout = discord.Embed(
     title="Upload alert: Error",
