@@ -5,8 +5,7 @@ import discord
 from utils.constants import bot, TOKEN
 from utils.workspace import startup, check_version
 from utils.helpers import threadButton
-bis = ":bust_in_silhouette:"
-arw = "<:resignarrow:1308822404214030397>"
+
 @bot.event
 async def on_ready() -> None:
     from google_drive import checkGDrive
@@ -14,8 +13,12 @@ async def on_ready() -> None:
     await check_version()
     bot.add_view(threadButton()) # make view persistent
     checkGDrive.start() # start gd daemon
+    # Fetch application info to get the owner's details
+    app_info = await bot.application_info()
+    bot_owner_name = app_info.owner.name  # Get the owner's username
+
     print(
-        f"Bot is ready, invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
+        f"Bot is ready, the owners name is".split,  bot_owner_name.split, "invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
     )
 
 @bot.event
@@ -59,7 +62,7 @@ async def helpbot(ctx: discord.ApplicationContext):
             "- Resigning and re-encryption are required for saves to function on new accounts or consoles.\n\n"
             "**Learn More**\n"
             "Watch our detailed video tutorial for step-by-step instructions: **[YouTube Tutorial](https://www.youtube.com/watch?v=cGeVhia0KjA)**\n\n"
-            "If you encounter any issues or need further help, please let me know. **/x64/dumped** 🔥"
+            "If you encounter any issues or need further help, please let me know. **/x64/dumped**\n"
             "**Conditions**\n"
             "Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first. <@1064395299042381874>"
 
