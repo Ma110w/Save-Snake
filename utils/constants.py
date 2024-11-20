@@ -306,7 +306,7 @@ embvalidpsn.set_footer(text=Embed_t.DEFAULT_FOOTER.value)
 embinit = discord.Embed(
     title="Save Snake <:pslogo:1297562957009387704> ",
     description=(
-        "## ℹ️Click the"
+        "## ℹ️Click the       *(conditions apply)*"
         "```Create Thread```"
         "\n## button to get started! You can return to your personal thread anytime. <a:catmoed:1297413325281558538>\n"
         "### <:HUH:1297563589552635976> If the interaction fails, the bot is most likely offline. <a:snakeroll:1297404301143969823>"
