@@ -18,7 +18,7 @@ async def on_ready() -> None:
     bot_owner_name = app_info.owner.name  # Get the owner's username
 
     print(
-        f"Bot is ready, the owners name is",  bot_owner_name, "invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
+        f"Bot is ready, the owners name is {bot_owner_name} invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
     )
 
 @bot.event
