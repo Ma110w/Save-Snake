@@ -16,9 +16,9 @@ async def on_ready() -> None:
     # Fetch application info to get the owner's details
     app_info = await bot.application_info()
     bot_owner_name = app_info.owner.name  # Get the owner's username
-
+    bow = bot_owner_name = str
     print(
-        f"Bot is ready, the owners name is {bot_owner_name} invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
+        f"Bot is ready, the owners name is {bot_owner_name} invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot and the string owner name is {bow}"
     )
 
 @bot.event
@@ -64,7 +64,7 @@ async def helpbot(ctx: discord.ApplicationContext):
             "Watch our detailed video tutorial for step-by-step instructions: **[YouTube Tutorial](https://www.youtube.com/watch?v=cGeVhia0KjA)**\n\n"
             "If you encounter any issues or need further help, please let me know.\n"
             "**Conditions**\n"
-            "Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first.{app_info.owner.name}"
+            "Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first."
 
         ),
         color=discord.Color.blue()
