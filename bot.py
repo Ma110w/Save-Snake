@@ -5,20 +5,29 @@ import discord
 from utils.constants import bot, TOKEN
 from utils.workspace import startup, check_version
 from utils.helpers import threadButton
+import asyncio
+
+bot_owner_name = None
+
+async def fetch_bot_owner():
+    global bot_owner_name
+    app_info = await bot.application_info()
+    bot_owner_name = f"🐍 **Bot Owner:** **{app_info.owner.name}**"
 
 @bot.event
 async def on_ready() -> None:
+    global bot_owner_name
     from google_drive import checkGDrive
+
+    if bot_owner_name is None:
+        await fetch_bot_owner()
     startup()
     await check_version()
-    bot.add_view(threadButton()) # make view persistent
-    checkGDrive.start() # start gd daemon
-    # Fetch application info to get the owner's details
-    app_info = await bot.application_info()
-    global bot_owner_name
-    bot_owner_name = app_info.owner.name  # Get the owner's username
+    bot.add_view(threadButton())
+    checkGDrive.start()
+
     print(
-        f"Bot is ready, the owners name is {bot_owner_name} invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
+        f"Bot is ready, invite link: https://discord.com/api/oauth2/authorize?client_id={bot.user.id}&permissions=8&scope=bot"
     )
 
 @bot.event
@@ -26,8 +35,65 @@ async def on_message(message: discord.Message) -> None:
     if message.author.bot:
         return
 
-    if message.content == "hello":
-        await message.channel.send("hi")
+    if message.content.lower() == "hello":
+        await message.channel.send("yeah? whatcha need?")
+
+    if bot.user.mention in message.content.lower():
+        if "hi" in message.content.lower() or "hello" in message.content.lower():
+            await message.channel.send("?")
+        elif "whats up" in message.content.lower() or "whatup" in message.content.lower():
+            await message.channel.send("Hey! What's up?")
+        elif "what's up?" in message.content.lower() or "what ya doing?" in message.content.lower():
+            await message.channel.send("Nothing much, Although {app_info.owner.name} has not turned Me off in 3 weeks, My Work is Torture.")
+        elif "guten morgen" in message.content.lower():
+            await message.channel.send("Bonjour! Je vous souhaite une excellente journée!")
+        elif "gute nacht" in message.content.lower():
+            await message.channel.send("Bonne nuit! Fais de beaux rêves")
+        elif "wie geht's" in message.content.lower():
+            await message.channel.send("Je vais très bien, merci de demander!")
+        elif "was geht" in message.content.lower():
+            await message.channel.send("Pas grand-chose, mais je suis là pour aider!")
+        elif "hallo" in message.content.lower():
+            await message.channel.send("Salut! Comment puis-je vous aider?")
+        elif "hi bot" in message.content.lower():
+            await message.channel.send("Hi! How can I assist you today?")
+        elif "servus" in message.content.lower():
+            await message.channel.send("Salut! Comment puis-je vous être utile?")
+        elif "hey" in message.content.lower():
+            await message.channel.send("Hey! what ya want?")
+        elif "moin" in message.content.lower():
+            await message.channel.send("Salut! En quoi puis-je vous aider?")
+        elif "hey there" in message.content.lower():
+            await message.channel.send("Hey there!")
+        elif "what's up bot" in message.content.lower():
+            await message.channel.send("Not much, I dont think you really want the answer though")
+        elif "hallo bot" in message.content.lower():
+            await message.channel.send("Salut! Comment puis-je t'aider?")
+        elif "how's it going" in message.content.lower():
+            await message.channel.send("It's going great! Thanks for asking!")
+        elif "whats the news" in message.content.lower():
+            await message.channel.send("No news yet, but I'm ready to help!")
+        elif "wie läufts" in message.content.lower():
+            await message.channel.send("Tout va bien! Merci de demander!")
+        elif "yo bot" in message.content.lower():
+            await message.channel.send("Yo! How can I help today?")
+        elif "hello bot" in message.content.lower():
+            await message.channel.send("Hello! What can I do for you today?")
+        elif "guten tag" in message.content.lower():
+            await message.channel.send("Bonjour! Comment puis-je vous aider?")
+        elif "alles klar" in message.content.lower():
+            await message.channel.send("Tout va bien! Comment puis-je t'aider?")
+        elif "how's everything going" in message.content.lower():
+            await message.channel.send("Everything's going well! How can I assist you?")
+        elif "everything okay" in message.content.lower():
+            await message.channel.send("Everything's great! How can I help you today?")
+        elif "is everything good" in message.content.lower():
+            await message.channel.send("Yes, everything's fine! How can I assist you today?")
+        elif "hey bot" in message.content.lower():
+            await message.channel.send("Hey! Ready to help, as always!")
+        elif "hiya" in message.content.lower():
+            await message.channel.send("おはようございます!")
+
 
     await bot.process_commands(message)
 ### Enter new commands here because apparently THATS A THING????

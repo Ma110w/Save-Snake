@@ -20,3 +20,4 @@ key.json
 requirements.txt
 STORAGE/
 __pycache__
+*.code-workspace
