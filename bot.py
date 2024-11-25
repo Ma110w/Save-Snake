@@ -11,9 +11,10 @@ bot_owner_name = None
 
 async def fetch_bot_owner():
     global bot_owner_name
+    global bot_owner_call
     app_info = await bot.application_info()
-    bot_owner_name = f"🐍 **Bot Owner:** **{app_info.owner.name}**"
-
+    bot_owner_name = f"@{app_info.owner.name}"
+    bot_owner_call = f"🐍 **Bot Owner:** **{app_info.owner.name}**"
 @bot.event
 async def on_ready() -> None:
     global bot_owner_name
@@ -44,7 +45,7 @@ async def on_message(message: discord.Message) -> None:
         elif "whats up" in message.content.lower() or "whatup" in message.content.lower():
             await message.channel.send("Hey! What's up?")
         elif "what's up?" in message.content.lower() or "what ya doing?" in message.content.lower():
-            await message.channel.send("Nothing much, Although {app_info.owner.name} has not turned Me off in 3 weeks, My Work is Torture.")
+            await message.channel.send(f"Nothing much, Although {bot_owner_name} has not turned Me off in 3 weeks, My Work is Torture.")
         elif "good morning" in message.content.lower():
             await message.channel.send("Bonjour! Je vous souhaite une excellente journée!")
         elif "good night" in message.content.lower():
@@ -59,7 +60,7 @@ async def on_message(message: discord.Message) -> None:
             await message.channel.send("Salut! Comment puis-je vous être utile?")
         elif "morning" in message.content.lower():
             await message.channel.send("Salut! En quoi puis-je vous aider?")
-        elif "how's it going" in message.content.lower():
+        elif "how's it running" in message.content.lower():
             await message.channel.send("Tout va bien! Merci de demander!")
         elif "good day" in message.content.lower():
             await message.channel.send("Bonjour! Comment puis-je vous aider?")
@@ -110,9 +111,9 @@ async def helpbot(ctx: discord.ApplicationContext):
             "- Resigning and re-encryption are required for saves to function on new accounts or consoles.\n\n"
             "**Learn More**\n"
             "Watch our detailed video tutorial for step-by-step instructions: **[YouTube Tutorial](https://www.youtube.com/watch?v=cGeVhia0KjA)**\n\n"
-            f"If you encounter any issues or need further help, please let me know. **{bot_owner_name}**\n"
+            f"If you encounter any issues or need further help, please let me know. **{bot_owner_call}**\n"
             "**Conditions**\n\n"
-            f"Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first. **{bot_owner_name}**"
+            f"Please ask before attempting to use my bot for financial gain. I'm happy to give permission; just ping me first. **{bot_owner_call}**"
 
         ),
         color=discord.Color.blue()
