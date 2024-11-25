@@ -45,43 +45,25 @@ async def on_message(message: discord.Message) -> None:
             await message.channel.send("Hey! What's up?")
         elif "what's up?" in message.content.lower() or "what ya doing?" in message.content.lower():
             await message.channel.send("Nothing much, Although {app_info.owner.name} has not turned Me off in 3 weeks, My Work is Torture.")
-        elif "guten morgen" in message.content.lower():
+        elif "good morning" in message.content.lower():
             await message.channel.send("Bonjour! Je vous souhaite une excellente journée!")
-        elif "gute nacht" in message.content.lower():
+        elif "good night" in message.content.lower():
             await message.channel.send("Bonne nuit! Fais de beaux rêves")
-        elif "wie geht's" in message.content.lower():
+        elif "how are you" in message.content.lower():
             await message.channel.send("Je vais très bien, merci de demander!")
-        elif "was geht" in message.content.lower():
+        elif "what's going on" in message.content.lower():
             await message.channel.send("Pas grand-chose, mais je suis là pour aider!")
-        elif "hallo" in message.content.lower():
+        elif "hello there" in message.content.lower():
             await message.channel.send("Salut! Comment puis-je vous aider?")
-        elif "hi bot" in message.content.lower():
-            await message.channel.send("Hi! How can I assist you today?")
-        elif "servus" in message.content.lower():
+        elif "greetings" in message.content.lower():
             await message.channel.send("Salut! Comment puis-je vous être utile?")
-        elif "hey" in message.content.lower():
-            await message.channel.send("Hey! what ya want?")
-        elif "moin" in message.content.lower():
+        elif "morning" in message.content.lower():
             await message.channel.send("Salut! En quoi puis-je vous aider?")
-        elif "hey there" in message.content.lower():
-            await message.channel.send("Hey there!")
-        elif "what's up bot" in message.content.lower():
-            await message.channel.send("Not much, I dont think you really want the answer though")
-        elif "hallo bot" in message.content.lower():
-            await message.channel.send("Salut! Comment puis-je t'aider?")
         elif "how's it going" in message.content.lower():
-            await message.channel.send("It's going great! Thanks for asking!")
-        elif "whats the news" in message.content.lower():
-            await message.channel.send("No news yet, but I'm ready to help!")
-        elif "wie läufts" in message.content.lower():
             await message.channel.send("Tout va bien! Merci de demander!")
-        elif "yo bot" in message.content.lower():
-            await message.channel.send("Yo! How can I help today?")
-        elif "hello bot" in message.content.lower():
-            await message.channel.send("Hello! What can I do for you today?")
-        elif "guten tag" in message.content.lower():
+        elif "good day" in message.content.lower():
             await message.channel.send("Bonjour! Comment puis-je vous aider?")
-        elif "alles klar" in message.content.lower():
+        elif "all clear" in message.content.lower():
             await message.channel.send("Tout va bien! Comment puis-je t'aider?")
         elif "how's everything going" in message.content.lower():
             await message.channel.send("Everything's going well! How can I assist you?")
