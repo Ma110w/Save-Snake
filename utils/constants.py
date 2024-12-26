@@ -97,7 +97,7 @@ else:
     print("It is recommended that you register a NPSSO token.")
 
 # BOT INITIALIZATION 
-activity = discord.Activity(type=discord.ActivityType.custom, name="HTOS database")
+activity = discord.Activity(type=discord.ActivityType.unknown, name="HTOS database")
 intents = discord.Intents.default()
 intents.message_content = True
 
