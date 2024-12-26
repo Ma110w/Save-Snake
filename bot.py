@@ -36,14 +36,14 @@ async def on_ready() -> None:
 
 @bot.event
 async def on_message(message: discord.Message) -> None:
-    ping_origin = discord.message.Message.author
-    
+
     if message.author.bot:
         return
 
     if bot.user.mention in message.content.lower():
         user_message = message.content.lower()
-
+        ping_origin = message.author
+        
         # Define possible phrases for each response
         if process.extractOne(user_message, ["hi", "hello"], score_cutoff=60):
             await message.channel.send("?")
