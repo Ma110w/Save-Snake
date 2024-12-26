@@ -13,11 +13,10 @@ bot_owner_name = None
 async def fetch_bot_owner():
     global bot_owner_name
     global bot_owner_call
-    global ping_origin
     app_info = await bot.application_info()
     bot_owner_name = f"@{app_info.owner.name}"
     bot_owner_call = f"🐍 **Bot Owner:** **{app_info.owner.name}**"
-    ping_origin = discord.message.Message.author
+    
 @bot.event
 async def on_ready() -> None:
     global bot_owner_name
@@ -37,6 +36,8 @@ async def on_ready() -> None:
 
 @bot.event
 async def on_message(message: discord.Message) -> None:
+    ping_origin = discord.message.Message.author
+    
     if message.author.bot:
         return
 
