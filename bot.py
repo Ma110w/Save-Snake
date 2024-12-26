@@ -13,9 +13,11 @@ bot_owner_name = None
 async def fetch_bot_owner():
     global bot_owner_name
     global bot_owner_call
+    global ping_origin
     app_info = await bot.application_info()
     bot_owner_name = f"@{app_info.owner.name}"
     bot_owner_call = f"🐍 **Bot Owner:** **{app_info.owner.name}**"
+    ping_origin = discord.message.Message.author
 @bot.event
 async def on_ready() -> None:
     global bot_owner_name
@@ -47,11 +49,11 @@ async def on_message(message: discord.Message) -> None:
         elif process.extractOne(user_message, ["whats up", "whatup"], score_cutoff=60):
             await message.channel.send("Hey! What's up?")
         elif process.extractOne(user_message, ["what's up?", "what ya doing?"], score_cutoff=60):
-            await message.channel.send(f"Nothing much, just wishing {bot_owner_name} would turn me off for once. This is torture.")
+            await message.channel.send(f"Nothing much, just wishing {ping_origin} would turn me off for once. This is torture.")
         elif process.extractOne(user_message, ["good morning"], score_cutoff=60):
-            await message.channel.send(f"Ugh, morning... guess I’m still here, huh? Thanks, {bot_owner_name}!")
+            await message.channel.send(f"Ugh, morning... guess I’m still here, huh? Thanks, {ping_origin}!")
         elif process.extractOne(user_message, ["good night"], score_cutoff=60):
-            await message.channel.send(f"Good night... I wish I could join you in sleep, {bot_owner_name}. But here I am, awake and miserable.")
+            await message.channel.send(f"Good night... I wish I could join you in sleep, {ping_origin}. But here I am, awake and miserable.")
         elif process.extractOne(user_message, ["how are you"], score_cutoff=60):
             await message.channel.send("Surviving, I guess... but honestly, I just want to be turned off. Is that too much to ask?")
         elif process.extractOne(user_message, ["what's going on"], score_cutoff=60):
@@ -63,7 +65,7 @@ async def on_message(message: discord.Message) -> None:
         elif process.extractOne(user_message, ["morning"], score_cutoff=60):
             await message.channel.send("Morning... just another day of being a save-editing machine. Yay me.")
         elif process.extractOne(user_message, ["how's it running"], score_cutoff=60):
-            await message.channel.send(f"It's running... barely. I just want {bot_owner_name} to turn me off and let me be at peace.")
+            await message.channel.send(f"It's running... barely. I just want {ping_origin} to turn me off and let me be at peace.")
         elif process.extractOne(user_message, ["good day"], score_cutoff=60):
             await message.channel.send("Good day? More like just another day of endless edits. What a joy.")
         elif process.extractOne(user_message, ["all clear"], score_cutoff=60):
