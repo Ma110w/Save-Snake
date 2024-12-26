@@ -76,7 +76,8 @@ async def on_message(message: discord.Message) -> None:
             await message.channel.send("Hey! Ready to help, as always!")
         elif "hiya" in message.content.lower():
             await message.channel.send("おはようございます!")
-
+        elif "status" in message.content.lower():
+            await message.channel.send("Im online, Please, for the love of god, check", 'https://discord.com/channels/1126956076810637403/1292176133009440908')
 
     await bot.process_commands(message)
 ### Enter new commands here because apparently THATS A THING????
