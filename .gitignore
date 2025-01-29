@@ -1,0 +1,17 @@
+*.env
+/bigboss
+*__pycache__
+/bin
+/lib
+/lib64
+account_ids.db
+autolaunch.sh
+Blacklist-manager.py
+/UserSaves
+/logs
+/STORAGE
+key.json
+valid_threads.db
+blacklist.db
+pyvenv.cfg
+/include
